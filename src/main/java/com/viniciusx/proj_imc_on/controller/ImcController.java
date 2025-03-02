@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -64,10 +65,13 @@ public class ImcController {
         }
     }
 
-    @DeleteMapping("/imc/all")
-    public ResponseEntity<String> deleteAll() {
-        service.deleteAllImcs();
-        return new ResponseEntity<>("Todos os registros foram excluídos!", HttpStatus.OK);
+    @DeleteMapping("/imc/all/{senha}")
+    public String deleteAll(@PathVariable("senha") String senha) {
+        if (service.deleteAllImcs(senha)) {
+            return "Todos os registros foram excluídos!";
+        } else {
+            return "Senha incorreta!";
+        }
     }
 
 }
