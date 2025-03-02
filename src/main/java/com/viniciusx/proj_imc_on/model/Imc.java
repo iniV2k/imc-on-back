@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity
 @Data
@@ -28,7 +29,7 @@ public class Imc {
 
     @PrePersist
     protected void prePersist() {
-        this.dataHoraRegistro = LocalDateTime.now();
+        this.dataHoraRegistro = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
     }
 
     public Imc(Long id) {

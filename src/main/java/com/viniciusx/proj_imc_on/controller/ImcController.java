@@ -64,4 +64,10 @@ public class ImcController {
         }
     }
 
+    @DeleteMapping("/imc/all")
+    public ResponseEntity<String> deleteAll() {
+        service.deleteAllImcs();
+        return new ResponseEntity<>("Todos os registros foram excluídos!", HttpStatus.OK);
+    }
+
 }
