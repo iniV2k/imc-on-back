@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+@CrossOrigin(origins = "https://vini-imc-on.netlify.app/")
 public class ImcController {
 
     private final ImcService service;
