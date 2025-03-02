@@ -28,6 +28,7 @@ public class ImcService {
 
     @Transactional
     public Imc saveOrUpdateImc(Imc imc) throws IOException {
+        imc.setAltura((int) imc.getAltura());
         imc.setValorImc(retornarValorImc(imc));
         repository.save(imc);
         return imc;

@@ -21,7 +21,7 @@ public class Imc {
     private Long id;
     private String nome;
     private double peso;
-    private double altura;
+    private int altura;
     private String sexo;
     private double valorImc;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
