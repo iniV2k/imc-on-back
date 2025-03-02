@@ -66,11 +66,11 @@ public class ImcController {
     }
 
     @DeleteMapping("/imc/all/{senha}")
-    public String deleteAll(@PathVariable("senha") String senha) {
+    public ResponseEntity<String> deleteAll(@PathVariable("senha") String senha) {
         if (service.deleteAllImcs(senha)) {
-            return "Todos os registros foram excluídos!";
+            return new ResponseEntity<>("Todos os registros foram excluídos!", HttpStatus.OK);
         } else {
-            return "Senha incorreta!";
+            return new ResponseEntity<>("Senha incorreta!", HttpStatus.UNAUTHORIZED);
         }
     }
 

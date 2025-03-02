@@ -46,10 +46,10 @@ public class ImcService {
     public boolean deleteAllImcs(String senha) {
         if (senha.equals("A1b2c3@")) {
             repository.deleteAll();
+            repository.resetarSequencia();
             return true;
         } else {
             return false;
         }
-
     }
 }
