@@ -28,15 +28,13 @@ public class ImcService {
 
     @Transactional
     public Imc saveOrUpdateImc(Imc imc) throws IOException {
-        imc.setAltura((int) imc.getAltura());
         imc.setValorImc(retornarValorImc(imc));
         repository.save(imc);
         return imc;
     }
 
     private double retornarValorImc(Imc imc) {
-        imc.setAltura(imc.getAltura() / 100);
-        return Math.round(imc.getPeso() / Math.pow(imc.getAltura(), 2) * 100.0) / 100.0;
+        return Math.round(imc.getPeso() / Math.pow((imc.getAltura() / 100.0), 2) * 100.0) / 100.0;
     }
 
     public void deleteById(int id) {
