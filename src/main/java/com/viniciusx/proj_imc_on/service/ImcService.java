@@ -2,8 +2,6 @@ package com.viniciusx.proj_imc_on.service;
 
 import com.viniciusx.proj_imc_on.model.Imc;
 import com.viniciusx.proj_imc_on.repository.ImcRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,7 +44,6 @@ public class ImcService {
     public boolean deleteAllImcs(String senha) {
         if (senha.equals("A1b2c3@")) {
             repository.deleteAll();
-            repository.resetarSequencia();
             return true;
         } else {
             return false;
