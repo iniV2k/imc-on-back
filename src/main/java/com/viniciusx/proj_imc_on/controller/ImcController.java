@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -40,14 +39,26 @@ public class ImcController {
     }
 
     @PostMapping("/imc")
-    public ResponseEntity<?> saveOrUpdateImc(@RequestBody Imc imc) {
+    public ResponseEntity<?> saveImc(@RequestBody Imc imc) {
         Imc imcSalvo = null;
 
         try {
-            imcSalvo = service.saveOrUpdateImc(imc);
+            imcSalvo = service.saveImc(imc);
             return new ResponseEntity<>(imcSalvo, HttpStatus.CREATED);
         } catch (IOException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/imc/{id}")
+    public ResponseEntity<?> updateImc(@RequestBody Imc imc, @PathVariable("id") int id) {
+        Imc imcAtualizado = null;
+
+        try {
+            imcAtualizado = service.updateImc(imc, id);
+            return new ResponseEntity<>(imcAtualizado, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
