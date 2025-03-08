@@ -58,13 +58,10 @@ public class ImcService {
 
         if (imcEncontrado.isPresent()) {
             Imc novosDados = imcEncontrado.get();
-            novosDados.setId(imc.getId());
             novosDados.setNome(imc.getNome());
             novosDados.setAltura(imc.getAltura());
             novosDados.setPeso(imc.getPeso());
             novosDados.setSexo(imc.getSexo());
-            novosDados.setValorImc(imc.getValorImc());
-            novosDados.setDataHoraRegistro(imc.getDataHoraRegistro());
 
             return repository.save(novosDados);
         }
